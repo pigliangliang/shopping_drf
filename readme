@@ -1,0 +1,45 @@
+1、drf的APIView、GenericView、viewsets和router的原理分析
+
+genericViewSet 是最高的一层
+
+往下
+
+GenericViewSet（viewsets）     ----drf
+
+　　GenericAPIView                  ---drf
+
+　　　　APIView                        ---drf
+
+　　　　　　View　　　　        ----django
+
+这些view功能的不同，主要的是有mixin的存在
+
+
+
+mixins总共有五种：
+
+　　CreateModelMixin
+
+　　ListModelMixin
+
+　　UpdateModelMixin
+
+　　RetrieveModelMixin
+
+　　DestoryModelMixin
+
+
+2、API文档
+  settings.py文件：
+
+    'rest_framework_docs',默认文档形式
+    'rest_framework_swagger', 第三方，需要安装，效果更好
+
+  url.py文件
+
+    #path('docs/',schema_view),默认形式
+
+     #swagger
+    from rest_framework_swagger.views import get_swagger_view
+    schema_view = get_swagger_view(title="沐夕漫黎")
+    path('users/',include('users.urls',namespace='users')),
